@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Search For Deals</title>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<!--form action="#" th:action="@{/search}" method="get">
+    	<p>Id: <input type="text" th:field="*{id}" /></p>
+        <p>Message: <input type="text" th:field="*{content}" /></p>
+        <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+    </form-->
+<!--div th:replace="fragments/header :: header"></div-->
+
+<div class="container">
+  <h2>Hotels</h2>
+  <form class="form-horizontal" action="#" th:action="@{/search}" method="get">
+    
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="destinationName">Destination:</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="destinationName" placeholder="Enter destination" name="destinationName"/>
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="TripStartDate">Trip Date:</label>
+      <div class="col-sm-1">
+          <p>Check-in</p>
+      </div>
+      <div class="col-sm-4">          
+        <input type="date" class="form-control" id="checkIn" name="checkIn"/>
+      </div>
+      <div class="col-sm-1">
+          <p>Check-out</p>
+      </div>
+      <div class="col-sm-4">          
+        <input type="date" class="form-control" id="checkOut" name="checkOut"/>
+      </div>
+    </div>
+    
+    <!--div class="form-group">
+      <label class="control-label col-sm-2" for="lengthOfStay">Length of Stay in Days:</label>
+      <div class="col-sm-2">
+        <input type="number" class="form-control" id="lengthOfStay" placeholder="Length of Stay" name="lengthOfStay" min="1"/>
+      </div>
+    </div-->
+      
+    <div class="form-group"> <!--totalPriceValue-->
+      <label class="control-label col-sm-2" for="minTotalRate">Total Price (USD):</label>
+      <div class="col-sm-1">
+          <p>From</p>
+      </div>
+      <div class="col-sm-2">          
+        <input type="number" class="form-control" id="minTotalRate" name="minTotalRate"/>
+      </div>
+      <div class="col-sm-1">
+          <p>To</p>
+      </div>
+      <div class="col-sm-2">          
+        <input type="number" class="form-control" id="maxTotalRate" name="maxTotalRate"/>
+      </div>
+    </div>
+    
+    <div class="form-group"> <!--hotelStarRating-->
+      <label class="control-label col-sm-2" for="minStarRating">Hotel Star Rating:</label>
+      <div class="col-sm-1">
+          <p>From</p>
+      </div>
+      <div class="col-sm-2">          
+        <input type="number" class="form-control" id="minStarRating" name="minStarRating" min="0" max="5"/>
+      </div>
+      <div class="col-sm-1">
+          <p>To</p>
+      </div>
+      <div class="col-sm-2">          
+        <input type="number" class="form-control" id="maxStarRating" name="maxStarRating" min="0" max="5"/>
+      </div>
+    </div>
+      
+    <div class="form-group"> <!--hotelGuestReviewRating-->
+      <label class="control-label col-sm-2" for="minGuestRating">Guest Rating:</label>
+      <div class="col-sm-1">
+          <p>From</p>
+      </div>
+      <div class="col-sm-2">          
+        <input type="number" class="form-control" id="minGuestRating" name="minGuestRating" min="0" max="5"/>
+      </div>
+      <div class="col-sm-1">
+          <p>To</p>
+      </div>
+      <div class="col-sm-2">          
+        <input type="number" class="form-control" id="maxGuestRating" name="maxGuestRating" min="0" max="5"/>
+      </div>
+    </div>
+    
+    <div class="form-group">        
+      <div class="col-sm-offset-2 col-sm-1">
+        <button type="submit" class="btn btn-default">Submit</button>
+      </div>
+      <div class="col-sm-1">
+        <button type="reset" class="btn btn-sm">Reset</button>
+      </div>
+    </div>
+  </form>
+</div>
+<!--div th:replace="fragments/footer :: footer"></div-->
+
+</body>
+</html>

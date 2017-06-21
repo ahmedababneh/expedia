@@ -1,0 +1,13 @@
+com/mycompany/expedia/model/Offers.class
+com/mycompany/expedia/model/HotelScores.class
+com/mycompany/expedia/model/HotelUrls.class
+com/mycompany/expedia/model/HotelUrgencyInfo.class
+com/mycompany/expedia/service/HotelFinderService.class
+com/mycompany/expedia/model/OfferDateRange.class
+com/mycompany/expedia/model/HotelPricingInfo.class
+com/mycompany/expedia/Application.class
+com/mycompany/expedia/model/HotelInfo.class
+com/mycompany/expedia/model/Destination.class
+com/mycompany/expedia/controller/HotelFinderController.class
+com/mycompany/expedia/model/Hotel.class
+com/mycompany/expedia/model/Deal.class
