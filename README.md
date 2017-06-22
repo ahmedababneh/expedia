@@ -1,7 +1,7 @@
 Introduction:
 -------------
 
-This document contains information about setting up a sandbox for the "HotelFinder" application. It also contains assumptions and known issues.
+This document contains information about setting up a sandbox for the "HotelFinder" application. It also contains assumptions.
 
 Installation Instructions:
 --------------------------
@@ -63,11 +63,10 @@ you should now see:
 	$ heroku keys
 
 If the key is not there, add it manually by running: $ heroku keys:add.
-	
 
 7. Cloning Repository:
 	
-	$ cd {home_directory}/Projects)
+	$ cd {home_directory}/Projects
 	$ git clone https://github.com/ahmedababneh/expedia.git
  
 8. Run the application:
@@ -81,8 +80,3 @@ Assumptions:
 ------------
 1. OS is Ubuntu 16.04
 2. git is installed
-
-
-Known Issues:
--------------
-None
