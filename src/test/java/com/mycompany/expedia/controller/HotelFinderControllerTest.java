@@ -23,6 +23,14 @@ import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.RequestBuilder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
+/**
+ * 
+ * @author ahmed
+ * We used Mockito framework for unit testing the application. 
+ * We used unit testing to test our conroller class "HotelFinderController" which exposes a GET method "search". 
+ * We wrote a unit test for this method. We use the mocking to return a specific deal when invoked. 
+ * Then, we used "Assert" to check whether the expected hotel deal fields are found in the generated search results page.
+ */
 @RunWith(SpringRunner.class)
 @WebMvcTest(value = HotelFinderController.class, secure = false)
 public class HotelFinderControllerTest {
@@ -33,6 +41,7 @@ public class HotelFinderControllerTest {
 	@MockBean
 	private HotelFinderService hotelFinderService;
         
+        // Creating mock objects
         Destination mockDestination = new Destination(12345, "Paris (and vicinity), France", "France", "Ile de France", "Paris");
         HotelInfo mockHotelInfo = new HotelInfo("Moulin Rouge", 3, 4, "https://images.trvl-media.com/hotels/1000000/90000/83100/83030/83030_89_t.jpg","Book now and save!");
         HotelPricingInfo mockHotelPricingInfo = new HotelPricingInfo(300, 400, "USD");
@@ -64,6 +73,7 @@ public class HotelFinderControllerTest {
 
 		MvcResult mvcResult = mockMvc.perform(requestBuilder).andReturn();
                 
+                // We check the output page contains the expexted deal data
                 String responseString = mvcResult.getResponse().getContentAsString();
                 assertThat(responseString, containsString("Paris (and vicinity), France"));
                 assertThat(responseString, containsString("Moulin Rouge"));

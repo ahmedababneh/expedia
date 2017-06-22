@@ -13,8 +13,13 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
 /**
- *
+ * 
  * @author ahmed
+ * In our case we are not talking to a database, instead we are talking with an API which provides us with data. 
+ * We chose to create the HotelFinderService class. This service class exposes the "retrieveDeal" method. 
+ * This method get the hotel deals by hitting the API endpoint, parsing the returned JSON, 
+ * and returning the data in the "Deal" object.
+ * Using the service class we abstract the data retrieval process, and move away data retrieval code from the controller.
  */
 @Component
 public class HotelFinderService {
@@ -34,10 +39,12 @@ public class HotelFinderService {
                             String minGuestRating, 
                             String maxGuestRating) {
         
+        // We use RestTemplate
 	RestTemplate restTemplate = new RestTemplate();
         HttpHeaders headers = new HttpHeaders();
         headers.set("Accept", MediaType.APPLICATION_JSON_VALUE);
         
+        // We build the URL to be submitted
         String url = "https://offersvc.expedia.com/offers/v2/getOffers";
         UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(url)
                 .queryParam("scenario", scenario)
@@ -54,7 +61,8 @@ public class HotelFinderService {
                 .queryParam("maxTotalRate", maxTotalRate)
                 .queryParam("minGuestRating", minGuestRating)
                 .queryParam("maxGuestRating", maxGuestRating);
-                
+        
+        // Getting deals
         Deal deal = restTemplate.getForObject(
                 builder.build().encode().toUri(), 
                 Deal.class);

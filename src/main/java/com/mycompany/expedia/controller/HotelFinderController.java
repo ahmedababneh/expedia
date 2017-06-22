@@ -4,18 +4,22 @@ import com.mycompany.expedia.model.Deal;
 import com.mycompany.expedia.service.HotelFinderService;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.client.RestTemplate;
-import org.springframework.web.util.UriComponentsBuilder;
 import java.time.Period;
 import org.springframework.beans.factory.annotation.Autowired;
 
+/**
+ * 
+ * @author ahmed
+ * This is the controller class
+ * We chose to use the GET method to submit the search criteria form in the home page, instead of POST, for the follwing reasons:
+ * 1. To enable users to bookmark the resulting "search" page for their reference.
+ * 2. The search parameters are not sensitive data in any way.
+ */
 @Controller
 public class HotelFinderController {
     
@@ -48,6 +52,10 @@ public class HotelFinderController {
         String maxTripStartDate = checkIn;
         int lengthOfStay=0;
         
+        // We noticed that the Hotel Deals API does not have "check-in" or "check-out" date parameters. 
+        // So, we passed a combination of "mix/maxTripStartDate" and "lengthOfStay" parameters instead to the API, 
+        // after calculating their vaules based on the provided "check-in" and "check-out" dates.
+        // Here we induce the values of "mix/maxTripStartDate" and "lengthOfStay" to be passed
         if( (checkIn != null && !checkIn.isEmpty())  && (checkOut != null && !checkOut.isEmpty()) ){
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
             LocalDate checkInAsDateType = LocalDate.parse(checkIn, formatter);
@@ -56,6 +64,7 @@ public class HotelFinderController {
             lengthOfStay = intervalPeriod.getDays();
         } 
         
+        // Returns the hotel deals based on the selected criteria
         Deal deal = hotelFinderService.retrieveDeal( scenario, 
                                                      page, 
                                                      uid, 
@@ -70,7 +79,9 @@ public class HotelFinderController {
                                                      maxStarRating, 
                                                      minGuestRating, 
                                                      maxGuestRating);
-                
+        
+        // We pass the deals to the template to be displayed
+        // We also pass the checkin/out dates and destination name to be dipalyed to the user in the top of the page
         model.addAttribute("deal", deal);
         model.addAttribute("checkIn", checkIn);
         model.addAttribute("checkOut", checkOut);

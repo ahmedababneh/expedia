@@ -1,7 +1,7 @@
 Introduction:
 -------------
 
-This document contains information about setting up a sandbox for the "HotelFinder" application. It also contains assumptions.
+This document contains information about setting up a sandbox for the "HotelFinder" application. It also contains assumptions and known issues.
 
 Installation Instructions:
 --------------------------
@@ -80,3 +80,7 @@ Assumptions:
 ------------
 1. OS is Ubuntu 16.04
 2. git is installed
+
+Known Issues:
+-------------
+1. Entering a check-out date bigger than the check-in date generates an error.

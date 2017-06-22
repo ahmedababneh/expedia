@@ -9,53 +9,60 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     </head>
     <body>
-        <!--p th:text="'Search, ' + ${deal.offers.hotels} + '!'" /-->
-        <div class="page-header">
-        <div class="row">
-            
-                <div class="col-sm-offset-2 col-sm-1">Destination</div>
-                <div class="col-sm-1" th:inline="text">[[${destinationName}]]</div> 
+        <div th:insert="header :: copy">
+            <div class="page-header">
+                <h1 class="text-center">Hotel Finder</h1>
+            </div> 
+        </div>
+        <div class="container">
+            <div class="row">
+                <!--div class="col-sm-offset-2 col-sm-1">Destination</div-->
+                <label class="control-label col-sm-offset-2 col-sm-1" for="checkIn">Destination</label>
+                <div class="col-sm-1" th:inline="text" id="destination" name="destination">[[${destinationName}]]</div> 
 
-                <div class="col-sm-1">Dates</div>
-                <div class="col-sm-1" th:inline="text">[[${checkIn}]]</div> 
-                <div class="col-sm-1" >To</div>
-                <div class="col-sm-1" th:inline="text">[[${checkOut}]]</div> 
-                
+                <label class="control-label col-sm-1" for="checkIn">From</label>
+                <div class="col-sm-2" th:inline="text" id="checkIn" name="checkIn">[[${checkIn}]]</div> 
+
+                <label class="control-label col-sm-1" for="checkOut">To</label>
+                <div class="col-sm-2" th:inline="text" id="checkOut" name="checkOut">[[${checkOut}]]</div> 
+
                 <div class="col-sm-offset-1 col-sm-1">
-                    <a href="#" th:href="@{/}">Search Again</a>
+                    <a href="#" th:href="@{/}">New Search</a>
                 </div> 
-                
             </div>   
+            <div class="row">
+                <div class="well">
+                    <div class="list-group" th:each="hotel: ${deal.offers.hotels}">
+                        <a href="#" class="list-group-item" style="height:auto; min-height:220px;">
+                            <div class="media col-md-3">
+                                <figure class="pull-left">
+                                    <img class="media-object img-rounded img-responsive"  th:src="${hotel.hotelInfo.hotelImageUrl}" th:alt="${hotel.hotelInfo.hotelName}" />
+                                </figure>
+                            </div>
+                            <div class="col-md-6">
+                                <h4 class="list-group-item-heading" th:inline="text"> [[${hotel.hotelInfo.hotelName}]]
+                                    <small th:text="${hotel.destination.longName}">Subtitle</small> 
+                                </h4>
+                                <p class="list-group-item-text" th:inline="text"> [[${hotel.hotelInfo.description}]]
+                                </p>
+                                <h5 th:inline="text"> Star Rating = [[${hotel.hotelInfo.hotelStarRating}]] <small> / </small> 5 </h5>
+                            </div>
+                            <div class="col-md-3 text-center" th:inline="text">
+                                <h3> Guest Ratings = [[${hotel.hotelInfo.hotelGuestReviewRating}]] </h3>
+
+                                <h2 th:inline="text"> 
+                                    [[${hotel.hotelPricingInfo.totalPriceValue}]] [[${hotel.hotelPricingInfo.currency}]]
+                                </h2>
+                                <h5> 
+                                    Total Price
+                                </h5>
+                                <p class="bg-success" th:inline="text">[[${hotel.hotelInfo.promotionDescription}]]</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
-       
-        <div class="row" th:each="hotel: ${deal.offers.hotels}">
-            <div class="col-sm-1">
-            </div>
-            <div class="col-sm-3">
-                <img th:src="${hotel.hotelInfo.hotelImageUrl}" class="img-responsive" th:alt="${hotel.hotelInfo.hotelName}"/>
-            </div>
-            <div class="col-sm-3">
-                <!--h3 th:text="${hotel.destination.longName}" /-->
-                <h3 th:inline="text" >
-                    [[${hotel.hotelInfo.hotelName}]]
-                    <small th:text="${hotel.destination.longName}">Subtitle</small>
-                </h3>
-                <h5 th:inline="text" >
-                    Star Rating = [[${hotel.hotelInfo.hotelStarRating}]] / 5
-                </h5>
-            </div>
-            <div class="col-sm-3">
-                <h4 th:inline="text" class="pull-right">
-                    [[${hotel.hotelInfo.hotelGuestReviewRating}]]
-                    <br/>
-                    <del>[[${hotel.hotelPricingInfo.hotelTotalBaseRate}]] [[${hotel.hotelPricingInfo.currency}]]</del>   [[${hotel.hotelPricingInfo.totalPriceValue}]] [[${hotel.hotelPricingInfo.currency}]]
-                    <p>Total Price</p>
-                    <p class="bg-success">[[${hotel.hotelInfo.promotionDescription}]]</p>
-                </h4>
-            </div>
-            <div class="col-sm-2">
-            </div>
-        </div>
-        
+
     </body>
 </html>

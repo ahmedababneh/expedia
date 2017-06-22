@@ -9,21 +9,18 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-<!--form action="#" th:action="@{/search}" method="get">
-    	<p>Id: <input type="text" th:field="*{id}" /></p>
-        <p>Message: <input type="text" th:field="*{content}" /></p>
-        <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
-    </form-->
-<!--div th:replace="fragments/header :: header"></div-->
-
+<div th:insert="header :: copy">
+    <div class="page-header">
+        <h1 class="text-center">Hotel Finder</h1>
+    </div> 
+</div>
 <div class="container">
-  <h2>Hotels</h2>
   <form class="form-horizontal" action="#" th:action="@{/search}" method="get">
     
     <div class="form-group">
       <label class="control-label col-sm-2" for="destinationName">Destination:</label>
       <div class="col-sm-10">
-        <input type="text" class="form-control" id="destinationName" placeholder="Enter destination" name="destinationName"/>
+        <input type="text" required="true" class="form-control" id="destinationName" placeholder="Enter destination" name="destinationName"/>
       </div>
     </div>
     
@@ -33,22 +30,15 @@
           <p>Check-in</p>
       </div>
       <div class="col-sm-4">          
-        <input type="date" class="form-control" id="checkIn" name="checkIn"/>
+        <input type="date" required="true" class="form-control" id="checkIn" name="checkIn"/>
       </div>
       <div class="col-sm-1">
           <p>Check-out</p>
       </div>
       <div class="col-sm-4">          
-        <input type="date" class="form-control" id="checkOut" name="checkOut"/>
+        <input type="date" required="true" class="form-control" id="checkOut" name="checkOut"/>
       </div>
     </div>
-    
-    <!--div class="form-group">
-      <label class="control-label col-sm-2" for="lengthOfStay">Length of Stay in Days:</label>
-      <div class="col-sm-2">
-        <input type="number" class="form-control" id="lengthOfStay" placeholder="Length of Stay" name="lengthOfStay" min="1"/>
-      </div>
-    </div-->
       
     <div class="form-group"> <!--totalPriceValue-->
       <label class="control-label col-sm-2" for="minTotalRate">Total Price (USD):</label>

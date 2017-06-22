@@ -63,7 +63,6 @@ you should now see:
 	$ heroku keys
 
 If the key is not there, add it manually by running: $ heroku keys:add.
-	
 
 7. Cloning Repository:
 	
@@ -82,7 +81,6 @@ Assumptions:
 1. OS is Ubuntu 16.04
 2. git is installed
 
-
 Known Issues:
 -------------
-None
+1. Entering a check-out date bigger than the check-in date generates an error

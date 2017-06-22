@@ -54,6 +54,7 @@ Technology Stack:
 4. Framework: Spring Boot
 5. Testing Framework: Mockito
 6. Build Tool: Maven
+7. Templating: ThymeLeaf
 
 As for Java, I am a big fan of it, and I am a certified Oracle Application Developement Framework Specialist, a JEE framework from Oracle.
 
