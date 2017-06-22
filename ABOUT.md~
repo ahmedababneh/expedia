@@ -1,0 +1,69 @@
+Please document what you are trying to accomplish with your application in a file called ABOUT.md and include anything about your thought process during the exercise that you'd like to share. Also mention how much (or little) experience you have with the particular language and framework you chose.
+
+- What are we trying to do
+- technology stack
+
+What are we trying to do:
+-------------------------
+
+We are building an application that helps users find hotel deals based on criteria of their choice. In order to build this application, we use an available API which provides with hotel deals.
+
+Input:
+-----
+The API endpoint which provides the application with hotel offers is: https://offersvc.expedia.com/offers/v2/getOffers. It is a GET request, it takes several parameters to filter the returned hotel deals, and returns a JSON of hotel deals. Examples of these passed parameters are: destinationCity (City where the hotel is located), and lenghtOfStay.
+
+Pages Structure:
+----------------
+Our application contain two main pages. 
+
+The first page is the welcoming home page where the user fills in the criteria for the hotel deal search. The filters that users can play with are: Destination, trip start and end dates, total price range, hotel star rating range, and guest rating range. Once the user presses "Submit", hotel deals that match the entered filters are displayed to the user on the search results page.
+
+The second page is the search results page displays the results based on criteria chosen in the home page. However, the user has the capability to choose "Search Again", in order the search criteria.
+
+Models:
+-------
+We created POJOs to hold data that will be returned from the API. Each nested JSON is mapped to its own POJO. For example, we built a class "hotelInfo" to hold the value of the "hotelInfo" JSON object. The relationships between the model classes is mapped to the JSON strcuture. For example, the "Destination" class attribute inside the "Hotel" class, is a mapping for the "Destination" object inside the "Hotel" objedt int the JSON.
+
+Models are grouped under a separate package "com.mycompany.expedia.model" in the main folder.
+
+Service:
+--------
+In our case we are not talking to a database, instead we are talking with an API which provides us with data. 
+We chose to create the HotelFinderService class. This service class exposes the "retrieveDeal" method. This method get the hotel deals by hitting the API endpoint, parsing the returned JSON, and returning the data in the "Deal" object. 
+
+Using the service class we abstract the data retrieval process, and move away data retrieval code from the controller.
+
+Service class is created under a separate package "com.mycompany.expedia.service" in the main folder.
+
+Tests:
+------
+We used Mockito framework for unit testing the application. We used unit testing to test our conroller class "HotelFinderController" which exposes a GET method "search". We wrote a unit test for this method. We use the mocking to return a specific deal when invoked. Then, we used "Assert" to check whether the expected hotel deal fields are found in the generated search results page.
+
+Test class is created under a separate package "com.mycompany.expedia.controller" in the test folder.
+
+Contoller:
+----------
+We noticed that the Hotel Deals API does not have "check-in" or "check-out" date parameters. So, we passed a combination of "mix/maxTripStartDate" and "lengthOfStay" parameters instead to the API, after calculating their vaules based on the provided "check-in" and "check-out" dates.
+
+Also, we chose to use the GET method to submit the search criteria form in the home page, instead of POST, for the follwing reasons:
+1. To enable users to bookmark the resulting "search" page for their reference. 
+2. The search parameters are not sensitive data in any way.
+
+Service class is created under a separate package "com.mycompany.expedia.controller" in the main folder.
+
+Technology Stack:
+----------------
+1. Hosting: Heroku
+2. Code Repository: Git
+3. Programming Language: Java
+4. Framework: Spring Boot
+5. Testing Framework: Mockito
+6. Build Tool: Maven
+
+As for Java, I am a big fan of it, and I am a certified Oracle Application Developement Framework Specialist, a JEE framework from Oracle.
+
+As for the framework, Spring Boot, it proved to be a great choice, although having little experience in it, for the following reasons:
+1. It favors convention over configuration, leaving out a lot of blumping and configuring work, to give way for focusing on the real work related to the business.
+2. It is a great fit for depolyment on Heroku.
+
+ 
