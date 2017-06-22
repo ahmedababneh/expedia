@@ -5,16 +5,17 @@ This document contains information about setting up a sandbox for the "HotelFind
 
 Installation Instructions:
 --------------------------
-In order to setup the "HotelFinder" application, you need to follow the steps below. If you already have Java 8 installed, then you may skip step 2. If you have Maven 3 installed, then you may skip step 3 too.
-In the following steps, if the step starts with the dollar sign - $ - then it is a shell command.
+In order to setup the "HotelFinder" application, you need to follow the steps below. 
+If you already have Java 8 installed, then you may skip step 2. 
+If you have Maven 3 installed, then you may skip step 3 too.
 
 1- Update the server:
 	
 	1.1. $ sudo apt-get update -y
-
 	1.2. $ sudo apt-get upgrade -y
 
 2- Install Java 8:
+
 	2.1. $ sudo add-apt-repository ppa:webupd8team/java
 	2.2. $ sudo apt-get update -y
 	2.3. $ sudo apt-get install oracle-java8-installer

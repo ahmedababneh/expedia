@@ -9,7 +9,9 @@ In order to setup the "HotelFinder" application, you need to follow the steps be
 In the following steps, if the step starts with the dollar sign - $ - then it is a shell command.
 
 1- Update the server:
+	
 	1.1. $ sudo apt-get update -y
+
 	1.2. $ sudo apt-get upgrade -y
 
 2- Install Java 8:
