@@ -54,7 +54,7 @@ Service class is created under a separate package "com.mycompany.expedia.control
 Technology Stack:
 ----------------
 1. Hosting: Heroku
-2. Code Repository: Git
+2. Version Control: Git
 3. Programming Language: Java
 4. Framework: Spring Boot
 5. Testing Framework: Mockito

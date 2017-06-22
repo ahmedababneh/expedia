@@ -1,8 +1,3 @@
-Please document what you are trying to accomplish with your application in a file called ABOUT.md and include anything about your thought process during the exercise that you'd like to share. Also mention how much (or little) experience you have with the particular language and framework you chose.
-
-- What are we trying to do
-- technology stack
-
 What are we trying to do:
 -------------------------
 
